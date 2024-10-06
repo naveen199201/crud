@@ -1,9 +1,5 @@
-.App {
-  text-align: center;
-  background-color: black;
-}
+
 .app{
-  /* width: 100vw; */
   display: flex;
   justify-content: center;
   background-color: beige;
@@ -17,4 +13,12 @@
   margin-left: 5px !important;
 }
 
-
+.table-header{
+  background-color: #70ebd9;
+}
+.table-heading{
+  font-weight: bold !important;
+}
+#table-action{
+  text-align: center;
+}

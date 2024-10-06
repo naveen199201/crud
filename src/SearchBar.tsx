@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { InputBase, IconButton, Paper } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close'; // Import CloseIcon
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -13,6 +14,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   // Handle expanding the search bar when search icon is clicked
   const handleExpand = () => {
     setExpanded(true);
+  };
+
+  // Handle collapsing the search bar when close icon is clicked
+  const handleCollapse = () => {
+    setExpanded(false);
+    setSearchQuery(''); // Clear the search query when closing
   };
 
   // Handle search input changes
@@ -35,10 +42,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         width: expanded ? 400 : 50, // Expand on click
         transition: 'width 0.3s ease-in-out',
       }}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch(); // Trigger search on form submit
+      }}
     >
-      <IconButton onClick={handleExpand} sx={{ p: '10px' }}>
-        <SearchIcon />
+      <IconButton
+        onClick={expanded ? handleCollapse : handleExpand} // Toggle between expand and collapse
+        sx={{ p: '10px' }}
+      >
+        {expanded ? <CloseIcon /> : <SearchIcon />} {/* Show close icon if expanded, else show search icon */}
       </IconButton>
+
       {expanded && (
         <InputBase
           sx={{ ml: 1, flex: 1 }}

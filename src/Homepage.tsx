@@ -43,11 +43,11 @@ const Homepage: React.FC<HomepageProps> = ({ users, deleteUser, openAddUserModal
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
-            <TableRow style={{backgroundColor:'blue'}}>
-              <TableCell>Name</TableCell>
-              <TableCell>Username</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Actions</TableCell>
+            <TableRow className='table-header'>
+              <TableCell className='table-heading'>Name</TableCell>
+              <TableCell className='table-heading'>Username</TableCell>
+              <TableCell className='table-heading'>Email</TableCell>
+              <TableCell className='table-heading' id='table-action'>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
